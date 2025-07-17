@@ -25,7 +25,7 @@ export const Hero = () => {
         transition={{ duration: 0.6 }}
         className="flex items-center justify-between p-6 md:p-8 relative z-10"
       >
-        <div className="font-semibold tracking-tight">API Workspace</div>
+        <div className="font-semibold tracking-tight">API Nexus</div>
         <a 
           href="https://github.com/Shantanu-Tiwari"
           rel="noopener noreferrer"
