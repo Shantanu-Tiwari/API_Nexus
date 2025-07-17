@@ -276,8 +276,20 @@ export const useApiStore = create<ApiStore>()(
         }));
       },
 
+      // The new, smarter function
       loadFromCollection: (request) => {
-        get().addTab(request);
+        const { tabs, setActiveTab, addTab } = get();
+
+        // Find an existing tab with the same request ID
+        const existingTab = tabs.find(tab => tab.request.id === request.id);
+
+        if (existingTab) {
+          // If the tab already exists, just make it active
+          setActiveTab(existingTab.id);
+        } else {
+          // Otherwise, create a new tab for this request
+          addTab(request);
+        }
       },
 
       addCollection: (name) => {

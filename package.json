@@ -6,8 +6,8 @@
     "apps/dashboard"
   ],
   "scripts": {
-    "dev:landing": "npm --workspace=apps/landing run dev",
-    "dev:dashboard": "npm --workspace=apps/dashboard run dev",
+    "dev:landing": "NEXT_DISABLE_ESLINT_PLUGIN=true npm --workspace=apps/landing run dev",
+    "dev:dashboard": "NEXT_DISABLE_ESLINT_PLUGIN=true npm --workspace=apps/dashboard run dev",
     "dev": "concurrently \"npm run dev:landing\" \"npm run dev:dashboard\""
   },
   "devDependencies": {
