@@ -2,7 +2,8 @@
   "name": "apinexus",
   "private": true,
   "workspaces": [
-    "apps/*"
+    "apps/landing",
+    "apps/dashboard"
   ],
   "scripts": {
     "dev:landing": "npm --workspace=apps/landing run dev",
