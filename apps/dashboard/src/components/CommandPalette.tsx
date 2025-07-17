@@ -6,15 +6,15 @@ import { Plus, Send, Settings, Clock, Database } from 'lucide-react';
 
 export const CommandPalette = () => {
   const [open, setOpen] = useState(false);
-  const { 
-    addTab, 
-    sendRequest, 
-    activeTabId, 
-    tabs, 
-    environments, 
+  const {
+    addTab,
+    sendRequest,
+    activeTabId,
+    tabs,
+    environments,
     setActiveEnvironment,
     collections,
-    loadFromCollection 
+    loadFromCollection
   } = useApiStore();
 
   useEffect(() => {
@@ -31,7 +31,7 @@ export const CommandPalette = () => {
 
   const handleCommand = (command: string, value?: any) => {
     setOpen(false);
-    
+
     switch (command) {
       case 'new-request':
         addTab();
@@ -51,65 +51,65 @@ export const CommandPalette = () => {
   };
 
   return (
-    <CommandDialog open={open} onOpenChange={setOpen}>
-      <CommandInput placeholder="Type a command or search..." />
-      <CommandList>
-        <CommandEmpty>No results found.</CommandEmpty>
-        
-        <CommandGroup heading="Actions">
-          <CommandItem onSelect={() => handleCommand('new-request')}>
-            <Plus className="mr-2 h-4 w-4" />
-            New Request
-          </CommandItem>
-          {activeTabId && (
-            <CommandItem onSelect={() => handleCommand('send-request')}>
-              <Send className="mr-2 h-4 w-4" />
-              Send Current Request
-            </CommandItem>
-          )}
-        </CommandGroup>
+      <CommandDialog open={open} onOpenChange={setOpen}>
+        <CommandInput placeholder="Type a command or search..." />
+        <CommandList>
+          <CommandEmpty>No results found.</CommandEmpty>
 
-        <CommandGroup heading="Environments">
-          {environments.map((env) => (
-            <CommandItem
-              key={env.id}
-              onSelect={() => handleCommand('switch-environment', env.id)}
-            >
-              <Settings className="mr-2 h-4 w-4" />
-              Switch to {env.name}
+          <CommandGroup heading="Actions">
+            <CommandItem onSelect={() => handleCommand('new-request')}>
+              <Plus className="mr-2 h-4 w-4" />
+              New Request
             </CommandItem>
-          ))}
-        </CommandGroup>
+            {activeTabId && (
+                <CommandItem onSelect={() => handleCommand('send-request')}>
+                  <Send className="mr-2 h-4 w-4" />
+                  Send Current Request
+                </CommandItem>
+            )}
+          </CommandGroup>
 
-        {collections.length > 0 && (
-          <CommandGroup heading="Collections">
-            {collections.slice(0, 5).map((request) => (
-              <CommandItem
-                key={request.id}
-                onSelect={() => handleCommand('load-collection', request)}
-              >
-                <Database className="mr-2 h-4 w-4" />
-                {request.name}
-              </CommandItem>
+          <CommandGroup heading="Environments">
+            {environments.map((env) => (
+                <CommandItem
+                    key={env.id}
+                    onSelect={() => handleCommand('switch-environment', env.id)}
+                >
+                  <Settings className="mr-2 h-4 w-4" />
+                  Switch to {env.name}
+                </CommandItem>
             ))}
           </CommandGroup>
-        )}
 
-        <CommandGroup heading="Tabs">
-          {tabs.map((tab) => (
-            <CommandItem
-              key={tab.id}
-              onSelect={() => {
-                setOpen(false);
-                // This would switch to the tab - we can implement this later
-              }}
-            >
-              <Clock className="mr-2 h-4 w-4" />
-              {tab.request.name} ({tab.request.method})
-            </CommandItem>
-          ))}
-        </CommandGroup>
-      </CommandList>
-    </CommandDialog>
+          {collections.length > 0 && (
+              <CommandGroup heading="Collections">
+                {collections.slice(0, 5).map((request) => (
+                    <CommandItem
+                        key={request.id}
+                        onSelect={() => handleCommand('load-collection', request)}
+                    >
+                      <Database className="mr-2 h-4 w-4" />
+                      {request.name}
+                    </CommandItem>
+                ))}
+              </CommandGroup>
+          )}
+
+          <CommandGroup heading="Tabs">
+            {tabs.map((tab) => (
+                <CommandItem
+                    key={tab.id}
+                    onSelect={() => {
+                      setOpen(false);
+                      // This would switch to the tab - we can implement this later
+                    }}
+                >
+                  <Clock className="mr-2 h-4 w-4" />
+                  {tab.request.name} ({tab.request.method})
+                </CommandItem>
+            ))}
+          </CommandGroup>
+        </CommandList>
+      </CommandDialog>
   );
 };

@@ -68,7 +68,6 @@ export const Hero = () => {
                 {/* The Button is now wrapped in an anchor tag to handle navigation */}
                 <a
                     href="https://api-nexus-dashboard-kappa.vercel.app/"
-                    target="_blank"
                     rel="noopener noreferrer"
                 >
                     <Button
