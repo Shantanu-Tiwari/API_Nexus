@@ -366,7 +366,7 @@ export const Sidebar = () => {
                                     </div>
                                 ))}
                                 {addingVariable === env.id ? (
-                                    <div className="flex gap-2">
+                                    <div className="flex flex-wrap gap-2">
                                       <Input placeholder="Key" value={newVariableKey} onChange={(e) => setNewVariableKey(e.target.value)} className="h-7 text-xs font-mono" />
                                       <Input placeholder="Value" value={newVariableValue} onChange={(e) => setNewVariableValue(e.target.value)} onKeyDown={(e) => { if (e.key === 'Enter') handleAddVariable(env.id); else if (e.key === 'Escape') setAddingVariable(null); }} className="h-7 text-xs font-mono" />
                                       <Button size="sm" onClick={() => handleAddVariable(env.id)} className="h-7 px-2">Add</Button>
