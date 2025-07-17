@@ -1,0 +1,15 @@
+{
+  "name": "apinexus",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev:landing": "npm --workspace=apps/landing run dev",
+    "dev:dashboard": "npm --workspace=apps/dashboard run dev",
+    "dev": "concurrently \"npm run dev:landing\" \"npm run dev:dashboard\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.0.0"
+  }
+}
