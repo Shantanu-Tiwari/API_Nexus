@@ -27,8 +27,7 @@ export const Hero = () => {
       >
         <div className="font-semibold tracking-tight">API Workspace</div>
         <a 
-          href="https://github.com/Shantanu-Tiwari" 
-          target="_blank" 
+          href="https://github.com/Shantanu-Tiwari"
           rel="noopener noreferrer"
         >
           <Button variant="ghost" size="sm" className="gap-2">

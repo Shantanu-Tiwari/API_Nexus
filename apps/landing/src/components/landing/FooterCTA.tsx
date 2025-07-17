@@ -39,7 +39,6 @@ export const FooterCTA = () => {
                 {/* The Button is now wrapped in an anchor tag */}
                 <a
                     href="https://api-nexus-dashboard-kappa.vercel.app/"
-                    target="_blank"
                     rel="noopener noreferrer"
                 >
                     <Button
