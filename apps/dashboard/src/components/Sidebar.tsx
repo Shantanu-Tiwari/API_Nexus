@@ -37,6 +37,35 @@ export const Sidebar = () => {
   const [newVariableValue, setNewVariableValue] = useState('');
   const [addingVariable, setAddingVariable] = useState<string | null>(null);
 
+  const groupedCollections = collections.reduce((acc, request) => {
+    const collection = request.collection || 'Default';
+    if (!acc[collection]) acc[collection] = [];
+    acc[collection].push(request);
+    return acc;
+  }, {} as Record<string, any[]>);
+
+  // THIS FUNCTION IS NOW FIXED
+  const handleCreateCollection = () => {
+    const collectionNames = Object.keys(groupedCollections);
+    let newCollectionNumber = 1;
+
+    const collectionNumbers = collectionNames
+        .map(name => {
+          const match = name.match(/^Collection (\d+)$/);
+          return match ? parseInt(match[1], 10) : 0;
+        })
+        .filter(num => !isNaN(num));
+
+    if (collectionNumbers.length > 0) {
+      newCollectionNumber = Math.max(...collectionNumbers) + 1;
+    }
+
+    const newName = `Collection ${newCollectionNumber}`;
+    addCollection(newName);
+    setActiveCollection(newName);
+    toggleCollection(newName);
+  };
+
   const toggleCollection = (collection: string) => {
     setExpandedCollections(prev => {
       const newSet = new Set(prev);
@@ -47,14 +76,6 @@ export const Sidebar = () => {
       }
       return newSet;
     });
-  };
-
-  const handleCreateCollection = () => {
-    const collectionCount = Object.keys(groupedCollections).length;
-    const newName = `Collection ${collectionCount + 1}`;
-    addCollection(newName);
-    setActiveCollection(newName);
-    toggleCollection(newName);
   };
 
   const handleRenameCollection = (oldName: string, newName: string) => {
@@ -153,13 +174,6 @@ export const Sidebar = () => {
   const handleVariableDelete = (envId: string, key: string) => {
     deleteEnvironmentVariable(envId, key);
   };
-
-  const groupedCollections = collections.reduce((acc, request) => {
-    const collection = request.collection || 'Default';
-    if (!acc[collection]) acc[collection] = [];
-    acc[collection].push(request);
-    return acc;
-  }, {} as Record<string, any[]>);
 
   const getMethodColor = (method: string) => {
     const colors = {
