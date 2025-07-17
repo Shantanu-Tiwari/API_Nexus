@@ -6,7 +6,7 @@ export const FooterCTA = () => {
   return (
     <section className="py-20 px-6 relative overflow-hidden">
       {/* Grid pattern with radial gradient fade */}
-      <div 
+      <div
         className="absolute inset-0"
         style={{
           backgroundImage: `
@@ -29,22 +29,29 @@ export const FooterCTA = () => {
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
             Ready to test?
           </h2>
-          
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <Button 
-              size="lg" 
-              className="gap-2 px-8 py-4 text-lg"
-              onClick={() => alert("Work in progress! 🚧\n\nThe API testing workspace is currently under development. Stay tuned!")}
+
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
             >
-              Launch Workspace
-              <ArrowRight className="h-5 w-5" />
-            </Button>
-          </motion.div>
+                {/* The Button is now wrapped in an anchor tag */}
+                <a
+                    href="https://api-nexus-dashboard-kappa.vercel.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <Button
+                        size="lg"
+                        className="gap-2 px-8 py-4 text-lg"
+                        // The onClick handler is removed
+                    >
+                        Launch Workspace
+                        <ArrowRight className="h-5 w-5" />
+                    </Button>
+                </a>
+            </motion.div>
         </motion.div>
       </div>
 
@@ -59,12 +66,12 @@ export const FooterCTA = () => {
         <p className="text-sm text-muted-foreground">
           No accounts. No tracking. Just testing.
         </p>
-        
+
         <p className="text-xs text-muted-foreground">
           Built by{" "}
-          <a 
-            href="https://www.linkedin.com/in/shantanutiwari24/" 
-            target="_blank" 
+          <a
+            href="https://www.linkedin.com/in/shantanutiwari24/"
+            target="_blank"
             rel="noopener noreferrer"
             className="hover:text-foreground transition-colors underline decoration-dotted"
           >

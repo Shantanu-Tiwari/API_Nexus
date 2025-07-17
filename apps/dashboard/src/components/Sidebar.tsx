@@ -8,9 +8,9 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Input } from '@/components/ui/input';
 
 export const Sidebar = () => {
-  const { 
-    collections, 
-    history, 
+  const {
+    collections,
+    history,
     environments,
     activeEnvironmentId,
     activeCollection,
@@ -73,7 +73,7 @@ export const Sidebar = () => {
     // Remove all requests in this collection
     const requestsToDelete = collections.filter(req => req.collection === collectionName);
     requestsToDelete.forEach(req => removeFromCollection(req.id));
-    
+
     // If this was the active collection, switch to next available collection
     if (activeCollection === collectionName) {
       const remainingCollections = Object.keys(groupedCollections).filter(name => name !== collectionName);
@@ -125,7 +125,7 @@ export const Sidebar = () => {
 
   const handleUseEnvironment = (environmentId: string) => {
     setActiveEnvironment(environmentId);
-    
+
     // Populate the current tab with environment variable VALUES
     if (activeTabId) {
       const env = environments.find(e => e.id === environmentId);
@@ -136,7 +136,7 @@ export const Sidebar = () => {
           // Clear previous environment data and use actual values, not template syntax
           const varEntries = Object.entries(env.variables);
           const baseUrlEntry = varEntries.find(([key]) => key.toLowerCase().includes('url') || key.toLowerCase().includes('host'));
-          
+
           // Replace all data, don't merge with existing
           updateTab(activeTabId, {
             request: {
@@ -158,7 +158,7 @@ export const Sidebar = () => {
     // Reset to default values: base_url and api_key
     updateEnvironmentVariable(envId, 'base_url', 'https://api.example.com');
     updateEnvironmentVariable(envId, 'api_key', 'your_api_key_here');
-    
+
     // Remove any other variables that might exist
     const env = environments.find(e => e.id === envId);
     if (env) {
@@ -208,7 +208,7 @@ export const Sidebar = () => {
             {isCollapsed ? <PanelLeftOpen className="h-4 w-4" /> : <PanelLeftClose className="h-4 w-4" />}
           </Button>
         </div>
-        
+
         {/* Active Collection Display - Show in all tabs */}
         {!isCollapsed && (
           <div className="mb-3">
@@ -359,7 +359,7 @@ export const Sidebar = () => {
                             </div>
                           )}
                         </div>
-                        
+
                         {expandedCollections.has(collectionName) && (
                           <div className="ml-4 space-y-1">
                             {requests.map(request => (
@@ -469,7 +469,7 @@ export const Sidebar = () => {
                            </Button>
                          </div>
                        </div>
-                      
+
                       <div className="space-y-2">
                         {Object.entries(env.variables).map(([key, value]) => (
                           <div key={key} className="flex items-center gap-2 text-sm">
@@ -523,7 +523,7 @@ export const Sidebar = () => {
                             )}
                           </div>
                         ))}
-                        
+
                         {addingVariable === env.id ? (
                           <div className="flex gap-2">
                             <Input

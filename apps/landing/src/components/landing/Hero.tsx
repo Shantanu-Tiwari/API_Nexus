@@ -60,31 +60,38 @@ export const Hero = () => {
             Instant, tabbed, Postman-grade workspace. No login.
           </motion.p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-          >
-            <Button 
-              size="lg" 
-              className="gap-2 px-8 py-3 text-base"
-              onClick={() => alert("Work in progress! 🚧\n\nThe API testing workspace is currently under development. Stay tuned!")}
+            <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                className="flex flex-col sm:flex-row gap-4 justify-center items-center"
             >
-              Launch Workspace
-              <ArrowRight className="h-4 w-4" />
-            </Button>
-            <a 
-              href="https://github.com/Shantanu-Tiwari" 
-              target="_blank" 
-              rel="noopener noreferrer"
-            >
-              <Button variant="ghost" size="lg" className="gap-2 px-8 py-3 text-base">
-                GitHub
-                <Github className="h-4 w-4" />
-              </Button>
-            </a>
-          </motion.div>
+                {/* The Button is now wrapped in an anchor tag to handle navigation */}
+                <a
+                    href="https://api-nexus-dashboard-kappa.vercel.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <Button
+                        size="lg"
+                        className="gap-2 px-8 py-3 text-base"
+                        // The onClick handler has been removed
+                    >
+                        Launch Workspace
+                        <ArrowRight className="h-4 w-4" />
+                    </Button>
+                </a>
+                <a
+                    href="https://github.com/Shantanu-Tiwari"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <Button variant="ghost" size="lg" className="gap-2 px-8 py-3 text-base">
+                        GitHub
+                        <Github className="h-4 w-4" />
+                    </Button>
+                </a>
+            </motion.div>
         </div>
       </div>
     </section>
